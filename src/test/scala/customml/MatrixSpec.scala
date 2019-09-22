@@ -6,7 +6,7 @@ import org.scalatest.time.SpanSugar._
 
 class MatrixSpec extends FlatSpec with Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
-  /*
+  
   "Matrix" should "report the proper number of rows and columns" in {
     val m = Matrix(Seq(Seq(1, 2, 3), Seq(4, 5, 6)))
     m.rows should be(2)
@@ -57,6 +57,5 @@ class MatrixSpec extends FlatSpec with Matchers with TimeLimitedTests {
   
   it should "calculate a 3x3 determinant" in {
     Matrix(Seq(Seq(1, 2, 3), Seq(4, 5, 2), Seq(4, 2, 1))).det should be (1.0 - (-8.0) + (-36.0))
-  } 
-  */ 
+  }  
 }
