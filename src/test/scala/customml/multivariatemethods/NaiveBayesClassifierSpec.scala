@@ -1,13 +1,14 @@
 package customml.multivariatemethods
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import customml.Gaussian
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class NaiveBayesClassifierSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class NaiveBayesClassifierSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
-  /*
+  
   "Naive Bayes Classifier" should "properly classify small input" in {
     val (nbc, legend) = NaiveBayesClassifier[String](Seq(
         (Seq(0,1,0), "A"), 
@@ -40,5 +41,5 @@ class NaiveBayesClassifierSpec extends FlatSpec with Matchers with TimeLimitedTe
     legend(nbc.classify(Seq(1.3,0.5,1.0)).indexOf(1.0)) should be ("c")
     legend(nbc.classify(Seq(0.8,0.7,0.8)).indexOf(1.0)) should be ("c")
   }
-  */
+  
 }

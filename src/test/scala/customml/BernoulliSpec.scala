@@ -1,10 +1,11 @@
 package customml
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class BernoulliSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class BernoulliSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
   
   "Bernoulli" should "have a mean of 0.5 with Array(0,1)" in {

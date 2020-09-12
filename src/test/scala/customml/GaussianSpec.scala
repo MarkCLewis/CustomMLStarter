@@ -1,10 +1,11 @@
 package customml
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class GaussianSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class GaussianSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
   
   "Gaussian" should "have mean of 0 for input Seq(-1, 1)" in {

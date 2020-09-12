@@ -1,13 +1,14 @@
 package customml.parametricmethods
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import customml.Gaussian
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class Classifier1DSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class Classifier1DSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
-  /*
+  
   "Classifier1D" should "properly classify points with a very simple input" in {
     val (c1d, legend) = Classifier1D(Seq((0.0, "A"), (1.0, "B"), (3.0, "C"),(0.01, "A"), (1.01, "B"), (3.01, "C")))
     legend(c1d.classify(0.0).indexOf(1.0)) should be ("A")
@@ -39,5 +40,5 @@ class Classifier1DSpec extends FlatSpec with Matchers with TimeLimitedTests {
     legend(c1d.classify(3.0).indexOf(1.0)) should be ("c")
     legend(c1d.classify(10.0).indexOf(1.0)) should be ("c")
   }
-  */
+  
 }

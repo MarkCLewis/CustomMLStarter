@@ -1,10 +1,11 @@
 package customml
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class BinomialSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class BinomialSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
   
   "Binomial" should "have a mean of 0.5 with inputs 1, Seq(1,0)" in {

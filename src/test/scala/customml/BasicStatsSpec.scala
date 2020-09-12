@@ -1,10 +1,11 @@
 package customml
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class TestBasicStats extends FlatSpec with Matchers with TimeLimitedTests {
+class TestBasicStats extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
   
   "mean" should "return 4 when called on Array(3,4,5)" in {

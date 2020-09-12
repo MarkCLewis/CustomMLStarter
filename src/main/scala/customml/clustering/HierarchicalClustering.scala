@@ -13,10 +13,17 @@ object HierarchicalClustering {
     ???
   }
 
+  /**
+   * This method searches the tree for the cut point where there are k-clusters and returns a sequence of
+   * those clusters.
+   */
   def findKClusters(tree: HClusterTree, k: Int): Seq[HClusterTree] = {
     ???
   }
 
+  /**
+   * This is a helper, larger for debugging purposes.
+   */
   def printDepth(tree: HClusterTree, d: Int, prefix: String = ""): Unit =
     if (d > 0) tree match {
       case Leaf(v) => println(prefix + v)

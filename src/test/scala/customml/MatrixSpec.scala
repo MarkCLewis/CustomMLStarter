@@ -1,10 +1,11 @@
 package customml
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class MatrixSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class MatrixSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
   
   "Matrix" should "report the proper number of rows and columns" in {
@@ -57,5 +58,27 @@ class MatrixSpec extends FlatSpec with Matchers with TimeLimitedTests {
   
   it should "calculate a 3x3 determinant" in {
     Matrix(Seq(Seq(1, 2, 3), Seq(4, 5, 2), Seq(4, 2, 1))).det should be (1.0 - (-8.0) + (-36.0))
-  }  
+  }
+
+  it should "do LUP to solve" in {
+    val a = Matrix(Seq(
+      Seq(1.0, 2.0, 0.0), 
+      Seq(3.0, 4.0, 4.0),
+      Seq(5.0, 6.0, 3.0)))
+    val b = new ColumnMatrix(Array(3.0, 7.0, 8.0))
+    val x = Matrix.solveWithLUPDecomposition(a, b)
+    x should be (new ColumnMatrix(Seq(-1.4, 2.2, 0.6)))
+    a*x should be (b)
+  }
+
+  it should "do Gaussian Elimination to solve" in {
+    val a = Matrix(Seq(
+      Seq(1.0, 2.0, 0.0), 
+      Seq(3.0, 4.0, 4.0),
+      Seq(5.0, 6.0, 3.0)))
+    val b = new ColumnMatrix(Array(3.0, 7.0, 8.0))
+    val x = Matrix.solveWithGaussianElimination(a, b)
+    x should be (new ColumnMatrix(Seq(-1.4, 2.2, 0.6)))
+    a*x should be (b)
+  }
 }

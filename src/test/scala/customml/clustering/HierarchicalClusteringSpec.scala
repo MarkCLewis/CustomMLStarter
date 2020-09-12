@@ -1,12 +1,13 @@
 package customml.clustering
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class HierarchicalClusteringSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class HierarchicalClusteringSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
-  /*
+  
   "HierarchicalClustering" should "give a simple tree for a simple input" in {
     val pnts = Seq(NVect(-1, 0.1), NVect(-1, -0.1), NVect(1, 0.1), NVect(1, -0.1))
     val tree = HierarchicalClustering.hClusters(pnts, (g1, g2) => NVect.average(g1).distSqr(NVect.average(g2)))
@@ -35,5 +36,5 @@ class HierarchicalClusteringSpec extends FlatSpec with Matchers with TimeLimited
     fourClusters(2).center should be (NVect.average(c4))
     fourClusters(3).center should be (NVect.average(c2))
   }
-  */
+  
 }

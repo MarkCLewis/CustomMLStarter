@@ -1,5 +1,8 @@
 package customml.clustering
 
+/**
+ * This is a helper class that I'm giving you that helps with the clustering.
+ */
 class NVect(private val x: Seq[Double]) {
   def +(that: NVect) = new NVect((x, that.x).zipped.map(_+_))
   def -(that: NVect) = new NVect((x, that.x).zipped.map(_-_))

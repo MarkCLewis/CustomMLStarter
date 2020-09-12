@@ -1,10 +1,11 @@
 package customml
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class MultinomialSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class MultinomialSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
   
   "Multinomial" should "have a mean of Seq(0.5,0.5) with inputs 1, Seq(Seq(1,0), Seq(0,1))" in {

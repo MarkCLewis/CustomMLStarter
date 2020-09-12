@@ -1,13 +1,14 @@
 package customml.clustering
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import customml.Gaussian
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 
-class KMeansSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class KMeansSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
-  /*
+  
   "k-means" should "properly cluster four points into two groups" in {
     val (centers, map) = KMeans.kMeans(Seq(new NVect(Seq(-1.0,0.1)),new NVect(Seq(-1.0,-0.1)),new NVect(Seq(1.1,0.1)),new NVect(Seq(0.9,-0.1))), 2)
     centers.length should be (2)
@@ -34,5 +35,5 @@ class KMeansSpec extends FlatSpec with Matchers with TimeLimitedTests {
     dists(1) should be (2.2)
     dists(2) should be (2.2)
   }
-  */
+  
 }

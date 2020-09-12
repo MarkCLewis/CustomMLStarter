@@ -1,11 +1,12 @@
 package customml.association
 
-import org.scalatest._
+import org.scalatest.flatspec._
+import org.scalatest.matchers._
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 import customml.association.Associations.Association
 
-class AssociationSpec extends FlatSpec with Matchers with TimeLimitedTests {
+class AssociationSpec extends AnyFlatSpec with should.Matchers with TimeLimitedTests {
   val timeLimit = 20.seconds
 
   "insufficient support" should "zero matches" in {
