@@ -1,4 +1,4 @@
-package customml
+package customml.matrix
 
 import org.scalatest.flatspec._
 import org.scalatest.matchers._

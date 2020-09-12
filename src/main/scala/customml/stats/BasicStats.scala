@@ -1,4 +1,4 @@
-package customml
+package customml.stats
 
 /**
  * Use population formulas instead of sample formulas for all of the places where it applies.

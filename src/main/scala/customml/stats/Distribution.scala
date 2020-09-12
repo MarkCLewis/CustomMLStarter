@@ -1,4 +1,4 @@
-package customml
+package customml.stats
 
 /**
  * Supertype for the distributions.

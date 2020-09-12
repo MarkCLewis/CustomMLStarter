@@ -2,7 +2,7 @@ package customml.decisiontree
 
 import org.scalatest.flatspec._
 import org.scalatest.matchers._
-import customml.Gaussian
+import customml.stats.Gaussian
 import org.scalatest.concurrent.TimeLimitedTests
 import org.scalatest.time.SpanSugar._
 import customml.UtilityFunctions._

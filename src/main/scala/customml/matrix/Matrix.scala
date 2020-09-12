@@ -1,4 +1,4 @@
-package customml
+package customml.matrix
 
 trait Matrix extends ((Int, Int) => Double) {
   def rows: Int

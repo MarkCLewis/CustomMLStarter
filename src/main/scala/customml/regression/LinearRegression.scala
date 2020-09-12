@@ -1,7 +1,7 @@
 package customml.regression
 
-import customml.Matrix
-import customml.ColumnMatrix
+import customml.matrix.Matrix
+import customml.matrix.ColumnMatrix
 
 /**
  * This represents a linear regression for some specified functions. You apply this to the data

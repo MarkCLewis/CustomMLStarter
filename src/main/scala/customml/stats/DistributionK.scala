@@ -1,4 +1,4 @@
-package customml
+package customml.stats
 
 trait DistributionK {
   def next(): Seq[Double]
