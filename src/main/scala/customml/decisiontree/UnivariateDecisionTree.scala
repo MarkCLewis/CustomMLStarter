@@ -13,7 +13,8 @@ class UnivariateDecisionTree[A](xr: Seq[(Seq[Double], A)], minEntropy: Double) {
 
   /**
    * This method will build the tree from the data. There should probably be some recursion in here.
-   * Note that to pass my simple tests, the location where you do your cut 
+   * Note that to pass my simple tests, the location where you do your cuts should use the information
+   * entropy.
    */
   def buildTree(data: Seq[(Seq[Double], A)]): Node[A] = {
     ???
