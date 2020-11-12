@@ -22,7 +22,7 @@ class KNNSmootherSpec extends AnyFlatSpec with should.Matchers with TimeLimitedT
       (Seq(1.1, -1.0), 0.0),
       (Seq(1.0, -1.1), 1.0)
     )
-    val smooth = new KNNSmoother(3, xr, _ => 1.0, euclidean)
+    val smooth = new KNNSmoother(3, xr, d => if (d <= 1.0) 1.0 else 0.0, euclidean)
     smooth.fit(Seq(1.05, 1.05)) should be (1.1 +- 1e-8)
     smooth.fit(Seq(-1.05, 1.05)) should be (0.1 +- 1e-8)
     smooth.fit(Seq(1.05, -1.05)) should be (0.0 +- 1e-8)
@@ -40,18 +40,18 @@ class KNNSmootherSpec extends AnyFlatSpec with should.Matchers with TimeLimitedT
       (Seq(6.0, 0.0), 2.0),
       (Seq(7.0, 0.0), 0.0),
     )
-    val smooth = new KNNSmoother(3, xr, d => 1/(1+d), euclidean)
+    val smooth = new KNNSmoother(3, xr, d => if (d <= 1.0) 1/(1+d) else 0.0, euclidean)
     smooth.fit(Seq(-4.0, 0.0)) should be (2.5 +- 1e-8)
     smooth.fit(Seq(0.0, 0.0)) should be (-1.0 +- 1e-8)
     smooth.fit(Seq(6.0, 0.0)) should be (2.0 +- 1e-8)
   }
 
-  it should "handle a bigger distribution" in {
-    val xr = Seq.fill(100)(Seq(math.random, math.random) -> math.random)
-    val smooth = new KNNSmoother(1, xr, d => 1/math.exp(-d*d), euclidean)
+  it should "handle a bigger distribution (could fail very rarely)" in {
+    val xr = Seq.fill(10000){ val x = math.random; val y = math.random; Seq(x, y) -> math.sin(x)*math.cos(y)}
+    val smooth = new KNNSmoother(10, xr, d => math.exp(-d*d), euclidean)
     for (_ <- 1 to 10) {
-      val xs = Seq(math.random(), math.random())
-      smooth.fit(xs) should be (xr.minBy(p => euclidean(p._1, xs))._2)
+      val xs = Seq(math.random()*0.8+0.1, math.random()*0.8+0.1)
+      smooth.fit(xs) should be (math.sin(xs(0))*math.cos(xs(1)) +- 0.01)
     }
   }
 }
